@@ -1,11 +1,12 @@
-import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Repository {
 
     LinkedHashMap<Integer, WiseSaying> wiseSayingMap = new LinkedHashMap<>();
     int number = 1; // 명언 번호
-    File
 
     void register(int id, WiseSaying wiseSaying) {
         wiseSayingMap.put(this.number, wiseSaying);
