@@ -8,7 +8,7 @@ public class Repository {
     LinkedHashMap<Integer, WiseSaying> wiseSayingMap = new LinkedHashMap<>();
     int number = 1; // 명언 번호
 
-    void register(int id, WiseSaying wiseSaying) {
+    void register(int number, WiseSaying wiseSaying) {
         wiseSayingMap.put(this.number, wiseSaying);
     }
 
