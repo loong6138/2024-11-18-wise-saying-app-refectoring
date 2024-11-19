@@ -26,11 +26,30 @@ public class Service {
     }
 
     void delete(String input) {
-        repository.delete(input);
+        int id = Integer.parseInt(input.substring(6));
+
         try {
-            repository.delete(input);
+            repository.delete(id);
+            System.out.println(id + "번 명언이 삭제되었습니다.");
+
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    void update(String input, Scanner scanner) {
+        int id = Integer.parseInt(input.substring(6));
+        if (repository.wiseSayingMap.get(id) == null) {
+            throw new NullPointerException(id + "번 명언은 존재하지 않습니다.");
+        } else {
+            System.out.println("명언(기존) : " + repository.findById(id).getMessage());
+            System.out.print("명언 : ");
+            String updateMessage = scanner.nextLine();
+            System.out.println("명언(기존) : " + repository.findById(id).getAuthor());
+            System.out.print("작가 : ");
+            String updateAuthor = scanner.nextLine();
+            repository.update(id, updateMessage, updateAuthor);
+        }
+
     }
 }

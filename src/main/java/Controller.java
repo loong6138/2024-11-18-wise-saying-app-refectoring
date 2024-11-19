@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Main {
+public class Controller {
 
-    public static void main(String[] args) throws NullPointerException {
+    public static void main(String[] args) {
 
         Service service = new Service();
 
@@ -19,11 +19,16 @@ public class Main {
                 service.findAll();
             } else if (input.contains("삭제?id=")) {
                 service.delete(input);
+            } else if (input.contains("수정?id=")) {
+                try {
+                    service.update(input, scanner);
+                } catch (NullPointerException e) {
+                    System.out.println(e.getMessage());
+                }
             } else if (input.equals("종료")) {
                 scanner.close();
                 break;
             }
-
 
         }
     }

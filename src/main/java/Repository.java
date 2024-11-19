@@ -1,9 +1,11 @@
+import java.io.File;
 import java.util.*;
 
 public class Repository {
 
     LinkedHashMap<Integer, WiseSaying> wiseSayingMap = new LinkedHashMap<>();
     int number = 1; // 명언 번호
+    File
 
     void register(int id, WiseSaying wiseSaying) {
         wiseSayingMap.put(this.number, wiseSaying);
@@ -20,15 +22,22 @@ public class Repository {
         }
     }
 
-    void delete(String input) {
-        int id = Integer.parseInt(input.substring(6));
-
+    void delete(int id) {
         if (wiseSayingMap.get(id) == null) {
             throw new NullPointerException(id + "번 명언은 존재하지 않습니다.");
         } else {
             wiseSayingMap.remove(id);
-            System.out.println(id + "번 명언이 삭제되었습니다.");
         }
 
+    }
+
+    void update(int id, String message, String author) {
+            WiseSaying wiseSaying = new WiseSaying(id, message, author);
+            wiseSayingMap.put(id, wiseSaying);
+
+    }
+
+    WiseSaying findById(int id) {
+        return wiseSayingMap.get(id);
     }
 }
