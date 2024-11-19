@@ -3,7 +3,7 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class Repository {
+public class WiseSayingRepository {
 
     LinkedHashMap<Integer, WiseSaying> wiseSayingMap = new LinkedHashMap<>();
     int number = 1; // 명언 번호

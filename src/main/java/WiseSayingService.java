@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
-public class Service {
+public class WiseSayingService {
 
-    Repository repository = new Repository();
+    WiseSayingRepository wiseSayingRepository = new WiseSayingRepository();
 
     void register(Scanner scanner) {
         System.out.print("명언 : ");
@@ -11,25 +11,25 @@ public class Service {
         System.out.print("작가 : ");
         String author = scanner.nextLine();
 
-        WiseSaying data = new WiseSaying(repository.number, message, author);
-        repository.register(repository.number, data);
+        WiseSaying data = new WiseSaying(wiseSayingRepository.number, message, author);
+        wiseSayingRepository.register(wiseSayingRepository.number, data);
 
-        System.out.println(repository.number + "번 명언이 등록되었습니다.");
-        repository.number++; // 명언 번호 증가
+        System.out.println(wiseSayingRepository.number + "번 명언이 등록되었습니다.");
+        wiseSayingRepository.number++; // 명언 번호 증가
     }
 
     void findAll() {
         System.out.println("번호 / 작가 / 명언");
         System.out.println("----------------------");
 
-        repository.findAll();
+        wiseSayingRepository.findAll();
     }
 
     void delete(String input) {
         int id = Integer.parseInt(input.substring(6));
 
         try {
-            repository.delete(id);
+            wiseSayingRepository.delete(id);
             System.out.println(id + "번 명언이 삭제되었습니다.");
 
         } catch (NullPointerException e) {
@@ -39,16 +39,16 @@ public class Service {
 
     void update(String input, Scanner scanner) {
         int id = Integer.parseInt(input.substring(6));
-        if (repository.wiseSayingMap.get(id) == null) {
+        if (wiseSayingRepository.wiseSayingMap.get(id) == null) {
             throw new NullPointerException(id + "번 명언은 존재하지 않습니다.");
         } else {
-            System.out.println("명언(기존) : " + repository.findById(id).getMessage());
+            System.out.println("명언(기존) : " + wiseSayingRepository.findById(id).getMessage());
             System.out.print("명언 : ");
             String updateMessage = scanner.nextLine();
-            System.out.println("명언(기존) : " + repository.findById(id).getAuthor());
+            System.out.println("명언(기존) : " + wiseSayingRepository.findById(id).getAuthor());
             System.out.print("작가 : ");
             String updateAuthor = scanner.nextLine();
-            repository.update(id, updateMessage, updateAuthor);
+            wiseSayingRepository.update(id, updateMessage, updateAuthor);
         }
 
     }
