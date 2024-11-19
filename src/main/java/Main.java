@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NullPointerException {
 
         Service service = new Service();
 
@@ -17,7 +17,7 @@ public class Main {
                 service.register(scanner);
             } else if (input.equals("목록")) {
                 service.findAll();
-            } else if (input.startsWith("삭제?id=")) {
+            } else if (input.contains("삭제?id=")) {
                 service.delete(input);
             } else if (input.equals("종료")) {
                 scanner.close();
