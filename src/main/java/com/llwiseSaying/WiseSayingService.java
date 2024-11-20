@@ -1,3 +1,5 @@
+package com.llwiseSaying;
+
 import java.util.Scanner;
 
 public class WiseSayingService {

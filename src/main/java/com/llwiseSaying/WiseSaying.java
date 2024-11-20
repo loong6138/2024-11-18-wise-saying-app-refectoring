@@ -1,3 +1,5 @@
+package com.llwiseSaying;
+
 public class WiseSaying {
 
     private int id;
